@@ -129,6 +129,17 @@ Tabula.Selection = Backbone.Model.extend({
     new_selection.set('page_number', next_page.get('number'));
     this.collection.add(Tabula.pdf_view.renderSelection(new_selection.toCoords()));
   },
+  repeatLassoMultiple: function(beg, end) {
+    //console.log(page.get('number'));
+    var current_page_number = beg - 1 ; //the page currently accessed in for loop
+    for(var i = 0; i < end - beg + 1; i++){ 
+      var next_page = Tabula.pdf_view.pdf_document.page_collection.at(Tabula.pdf_view.pdf_document.page_collection.indexOf(Tabula.pdf_view.pdf_document.page_collection.findWhere({number: current_page_number}))+1);
+      new_selection = this.clone();                            // and create a new Selection.
+      new_selection.set('page_number', next_page.get('number'));
+      this.collection.add(Tabula.pdf_view.renderSelection(new_selection.toCoords()));
+      current_page_number++;
+    }
+  }
 });
 
 // Not currently used at all.
@@ -798,6 +809,7 @@ Tabula.PageView = Backbone.View.extend({ // one per page of the PDF
       <ul class="dropdown-menu">\
         <li><a class="dropdown-item repeat-lassos" href="#">Repeat to All Pages</a></li>\
         <li><a class="dropdown-item repeat-lasso-once" href="#">Repeat to Next Page</a></li>\
+        <li><a class="dropdown-item repeat-lasso-multiple" href="#">Repeat to Specified Pages</a></li>\
       </ul>\
     </div>');
       button.find("button").data("selectionId", selection.id);
@@ -1187,6 +1199,36 @@ Tabula.PDFView = Backbone.View.extend(
           var selectionId = $(e.currentTarget).data('selectionId');
           var selection = Tabula.pdf_view.pdf_document.selections.get(selectionId);
           selection.repeatLassoOnce();
+          e.preventDefault();
+        });
+      $('body').
+        on("click", ".repeat-lasso-multiple", function(e) {
+          var prompt = window.prompt("Specify Pages To Repeat Selection (e.g. 1-12, 14-16, 18-20)");
+          if(prompt == null) { e.preventDefault(); }
+          var regex = /^[0-9]+-[0-9]+$/;
+          var pages = prompt.replace(/,/g, "").split(" "); //regex needed because replace will only work on first comma when using string
+          var page_count = Tabula.pdf_view.pdf_document.page_collection.length;
+          for(var i = 0; i < pages.length; i++){ //todo: implement overlap check for multiple selections
+            if (regex.test(pages[i])) { 
+              var split = pages[i].split("-");
+              var beginning_number = split[0];
+              var end_number = split[1];
+              if(beginning_number > 0 && beginning_number < page_count && end_number > 0 && end_number < page_count) {
+              var selectionId = $(e.currentTarget).data('selectionId');
+              var selection = Tabula.pdf_view.pdf_document.selections.get(selectionId);
+              selection.repeatLassoMultiple(beginning_number, end_number);
+              }
+              else if(beginning_number < 0 && end_number < 0) {
+                alert("Range cannot begin nor end with 0... Skipping");
+              }
+              else {
+                alert("Range cannot exceed the page count of document... Skipping");
+              }
+            }
+          else{
+            alert("Invalid Range: " + pages[i] +  " Skipping");
+          }
+        }
           e.preventDefault();
         });
 
