@@ -355,7 +355,7 @@ Cuba.define do
 
         widgets = java.util.ArrayList.new()
         tables.each do |table|
-          widgets.add(table.to_csv)
+          widgets.add(table.to_json[0...-1] )
         end
         extractor = Tabula::Extraction::ObjectExtractor.new(pdf_path)
         contentData = extractor.extractCsv(widgets, template_model_json["selections"].to_json)
