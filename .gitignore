@@ -35,3 +35,6 @@ tmp
 .jbundler/classpath.rb
 Jarfile.lock
 .jbundler/classpath.rb
+edu/
+*.pdf
+*-layout.json
