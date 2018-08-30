@@ -1,0 +1,26 @@
+{
+   "leftStartX" : "80",
+   "rightStartX" : "640",
+   "startY" : "70",
+   "endY" : "740",
+   "tableGap" : "10.0",
+   "tableDelimiter" : "#####",
+   "extractStrategyDetails": {"extractStrategy":"com.pdfextract.common.SingleColumnExtractSection", "additionalParameters": {"name": "krishna"}},
+   "sections" : [
+      {
+         "name" : "Address",
+         "regex" : "^APPLICANT REFERENCE NUMBER:.*",
+         "isTabular" : "false"
+      },
+      {
+         "name" : "Commodities",
+         "regex" : "^COMMODITIES:.*",
+         "isTabular" : "false"
+      },
+      {
+         "name" : "Riders and Conditions",
+         "regex" : "^RIDERS AND CONDITIONS:",
+         "isTabular" : "false"
+      }
+   ]
+}

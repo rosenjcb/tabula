@@ -1,0 +1,12 @@
+{
+	"leftStartX": "80", 
+	"rightStartX": "320",
+	"startY": "90",
+	"endY": "723",
+	"tableGap": "17.0",
+	"tableDelimiter": "#####",
+	"extractStrategyDetails": {"extractStrategy":"com.pdfextract.common.sample.SampleExtractorStrategy", "additionalParameters": {"name": "krishna"}},
+	"sections":[
+		{"name": "Description"}
+	]
+}
