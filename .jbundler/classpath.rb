@@ -34,7 +34,6 @@ JBUNDLER_CLASSPATH << 'C:\Users\krishna\.m2\repository\com\apple\AppleJavaExtens
 JBUNDLER_CLASSPATH << 'C:\Users\krishna\.m2\repository\org\yaml\snakeyaml\1.18\snakeyaml-1.18.jar'
 JBUNDLER_CLASSPATH << 'C:\Users\krishna\.m2\repository\de\jollyday\jollyday\0.4.9\jollyday-0.4.9.jar'
 JBUNDLER_CLASSPATH << 'C:\Users\krishna\.m2\repository\junit\junit\4.10\junit-4.10.jar'
-JBUNDLER_CLASSPATH << 'C:\Users\krishna\.m2\repository\com\hcl\pdf-extract-impl\1.0.4-SNAPSHOT\pdf-extract-impl-1.0.4-SNAPSHOT.jar'
 JBUNDLER_CLASSPATH << 'C:\Users\krishna\.m2\repository\edu\stanford\nlp\stanford-parser\3.8.0\stanford-parser-3.8.0.jar'
 JBUNDLER_CLASSPATH << 'C:\Users\krishna\.m2\repository\xerces\xercesImpl\2.8.0\xercesImpl-2.8.0.jar'
 JBUNDLER_CLASSPATH << 'C:\Users\krishna\.m2\repository\org\apache\poi\poi-ooxml\3.15\poi-ooxml-3.15.jar'

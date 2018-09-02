@@ -29,7 +29,6 @@
 - org.yaml:snakeyaml:jar:1.18
 - de.jollyday:jollyday:jar:0.4.9
 - junit:junit:jar:4.10
-- com.hcl:pdf-extract-impl:jar:1.0.4-SNAPSHOT
 - edu.stanford.nlp:stanford-parser:jar:3.8.0
 - xerces:xercesImpl:jar:2.8.0
 - org.apache.poi:poi-ooxml:jar:3.15
