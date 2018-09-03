@@ -55,7 +55,8 @@ module Tabula
 
           #table_extractor = use_spreadsheet_extraction_method ? sea : bea
           table_extractor = sea
-          table_extractor.extract(area).each { |table| table.spec_index = spec["spec_index"]; y.yield table }
+          #table_extractor.extract(area).each { |table| table.spec_index = spec["spec_index"]; y.yield table }
+          table_extractor.extract(page).each { |table| table.spec_index = spec["spec_index"]; y.yield table }
         end
       end;
       extractor.close!

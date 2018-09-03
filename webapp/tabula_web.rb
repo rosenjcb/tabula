@@ -327,7 +327,11 @@ Cuba.define do
     on "pdf/:file_id/data" do |file_id|
       pdf_path = Tabula::Workspace.instance.get_document_path(file_id)
 
+      print "***" + req.params['coords'] + "!!!!!"
+
+      #tempCoord = "[{\"page\":1,\"extraction_method\":\"guess\",\"selection_id\":\"N1536009388376\",\"x1\":66.9375,\"x2\":138.8475,\"y1\":82.2375,\"y2\":125.8425,\"width\":71.91,\"height\":43.605000000000004}]"
       coords = JSON.load(req.params['coords'])
+      #coords = JSON.load(tempCoord)
       coords.sort_by! do |coord_set|
         [
          coord_set['page'],
